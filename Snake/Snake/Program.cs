@@ -9,16 +9,24 @@ namespace Snake
     class Program
     {
         static void Main(string[] args) {
-            PrintSymbol(1, 5, '*');
-            PrintSymbol(2, 6, '*');
-            PrintSymbol(3, 7, '*');
 
+           Console.SetBufferSize( 80,25 );
+           HorizontalLine topLine = new HorizontalLine(0, 78, 0, '+');
+           HorizontalLine bottomLine = new HorizontalLine(0, 78, 24, '+');
+           topLine.Drow();
+           bottomLine.Drow();
+           VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
+           VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
+           leftLine.Drow();
+           rightLine.Drow();
+
+
+           var p = new Point( 7, 7, '*' );
+           Snake snake = new Snake( p, 7, Directions.Left );
+           snake.Drow();
             Console.ReadKey();
         }
 
-        public static void PrintSymbol( int x, int y, char s ) {
-         Console.SetCursorPosition( x,y );
-         Console.Write(s);
-        }
-    }
+
+   }
 }
